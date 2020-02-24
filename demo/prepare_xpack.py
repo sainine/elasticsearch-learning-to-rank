@@ -3,7 +3,7 @@ import getpass
 import sys
 
 from log_conf import Logger
-from utils import Elasticsearch
+from utils import elastic_connection
 
 if __name__ == "__main__":
     """This script set the default roles and users to run the LTR demo"""
@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     username = sys.argv[1]
 
-    es = Elasticsearch(http_auth=(username, password))
+    es = elastic_connection(http_auth=(username, password))
     xpack = XPackClient(es)
 
     Logger.logger.info("Configure ltr_admin role:")
